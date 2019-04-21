@@ -1,0 +1,15 @@
+#|-*- mode:lisp -*-|#
+(in-package :cl-user)
+(defpackage :lake.user
+  (:use :cl :lake :cl-syntax)
+  (:shadowing-import-from :lake
+						  :directory))
+(in-package :lake.user)
+
+(use-syntax :interpol)
+ ;;; here follow your tasks...
+(task "test" ()
+	  (ql:quickload '(:rove :mylib))
+	  (load #P"nqueen.asd")
+	  (load #P"nqueen-test.asd")
+	  (asdf:test-system :nqueen-test))
